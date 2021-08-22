@@ -12,6 +12,7 @@ request('https://taketon-blog.com/kazugramming', (e, response, body) => {
     for (let i = 0; i < html.length; i++) {
       console.log(html[i].textContent.trim());
     }
+
   } catch (e) {
     console.error(e)
   }
