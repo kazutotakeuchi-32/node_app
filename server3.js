@@ -24,6 +24,7 @@ function RouteSetting(req,res) {
       res.end()
       break
     case "/style.css"  :
+    case "/style/style.css":
       res.writeHead(200, {'Content-Type': "text/css"})
       res.write(styleCss)
       res.end()
