@@ -1,15 +1,23 @@
 const http = require("http")
-// const fetch = require("node-fetch")
-// fetch('https://api.github.com/users/github')
-// 	.then(res => res.json())
-// 	.then(json => console.log(json));
+const fs = require("fs")
 
-const server = http.createServer((req,res)=>{
+
+const server = http.createServer(async (req,res)=>{
+
+  const fetch = require("node-fetch")
+  const json = await fetch('https://api.github.com/users/kazutotakeuchi-32')
+	.then(res => res.json())
   res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
-  res.write('<h1>Hello World</h1>');
-  res.end();
+  res.write(`<a href=${json.html_url}>Hello World</a>`);
+  const a= document.querySelector("a")
+  // fs.readFile('index.html','utf8',(error,data)=>{
+  //   res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+  //   res.write(data)
+  //   res.end();
+  // })
+  // res.end(JSON.stringify({ 'foo': 'bar' }));
 })
 
 const port = 4000
 server.listen(port)
-console.log(port);
+console.log(`localhost:${port}`);
